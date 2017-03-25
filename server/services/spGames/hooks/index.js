@@ -1,8 +1,10 @@
-import hooks from 'feathers-hooks';
-
+import { hooks as auth } from 'feathers-authentication';
 
 const before = {
-  all: [],
+  all: [
+    // auth.verifyOrRestrict({ restrict: { store: false } }),
+    // auth.populateOrRestrict({ restrict: { store: false } }),
+  ],
   find: [],
   get: [],
   create: [],

@@ -5,7 +5,6 @@ import SPGamesModel from '../../../server/services/spGames/spGames-model';
 
 chai.use(dirtyChai);
 
-const code = '0123';
 
 describe('spGames model', () => {
   it('requires a code', () => {

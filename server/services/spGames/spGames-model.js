@@ -26,12 +26,14 @@ const codeSchemaN = (n) => {
 };
 
 const code4 = codeSchemaN(4);
-const spGamesSchema = new Schema({
-  code: { type: code4, required: true },
-  guesses: [code4],
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-});
+const spGamesSchema = new Schema(
+  {
+    player: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+    code: { type: code4, required: true },
+    guesses: [code4],
+  },
+  { timestamps: true },
+);
 
 
 const SPGamesModel = mongoose.model('spGames', spGamesSchema);
