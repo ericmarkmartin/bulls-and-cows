@@ -16,7 +16,7 @@ function setup() {
   // Initialize our service with any options it requires
   app.use('/spGames', service(options));
 
-  // Get our initialize service to that we can bind hooks
+  // Get our initialized service to that we can bind hooks
   const spGamesService = app.service('/spGames');
 
   // Set up our before hooks
