@@ -1,7 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
-  "mongodb": "mongodb://localhost:27017/trumpoftheday",
+  "mongodb": "mongodb://localhost:27017/bulls-and-cows",
   "public": "../client/public/",
   "auth": {
     "token": {

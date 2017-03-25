@@ -1,6 +1,5 @@
 import path from 'path';
 import feathers, { static as serveStatic } from 'feathers';
-import favicon from 'serve-favicon';
 import compress from 'compression';
 import cors from 'cors';
 import configuration from 'feathers-configuration';
@@ -9,8 +8,8 @@ import rest from 'feathers-rest';
 import bodyParser from 'body-parser';
 import socketio from 'feathers-socketio';
 import webpack from 'webpack';
-import middleware from './src/middleware';
-import services from './src/services';
+import middleware from './server/middleware';
+import services from './server/services';
 import config from './webpack/webpack.config.development.babel';
 
 const app = feathers();
@@ -28,7 +27,6 @@ app.configure(configuration(path.join(__dirname, '..')));
 app.use(compress())
   .options('*', cors())
   .use(cors())
-  .use(favicon(path.join(app.get('public'), 'favicon.ico')))
   .use('/', serveStatic(app.get('public')))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
