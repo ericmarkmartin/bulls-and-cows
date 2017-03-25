@@ -2,7 +2,7 @@ const winston = require('winston');
 
 module.exports = function middleware(app) {
   // Add a logger to our app object for convenience
-  app.logger = winston; // eslint-disable-line no-param-reassign
+  Object.assign(app, { logger: winston });
 
   return (error, req, res, next) => {
     if (error) {
