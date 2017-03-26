@@ -12,17 +12,20 @@ const codeSchemaN = (n) => {
   if (!(n >= 1 && n <= 10)) {
     throw new RangeError('Code must be between 1 and 10 (inclusive) characters long.');
   }
-  return new Schema({
-    value: {
-      type: String,
-      required: true,
-      validate: [
-        { validator: allDigits, msg: 'Code must consist only of digits.' },
-        { validator: uniqueCharacters, msg: 'Code may not repeat characters.' },
-        { validator: lengthOf(n), msg: `Code must be ${n} characters long.` },
-      ],
+  return new Schema(
+    {
+      value: {
+        type: String,
+        required: true,
+        validate: [
+          { validator: allDigits, msg: 'Code must consist only of digits.' },
+          { validator: uniqueCharacters, msg: 'Code may not repeat characters.' },
+          { validator: lengthOf(n), msg: `Code must be ${n} characters long.` },
+        ],
+      },
     },
-  });
+    { _id: false },
+  );
 };
 
 const code4 = codeSchemaN(4);
