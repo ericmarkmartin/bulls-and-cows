@@ -9,11 +9,40 @@ class Service {
     this.spGames = app.service('spGames');
   }
 
-  get(id, params) {
-    return this.spGames.get(id).then(game => ({
-      id,
-      text: `The code for game ${id} is ${game.code.value}. Guess: ${params.query.guess}`,
-    }));
+  addGuess(gameId, guess) {
+    return this.spGames.patch(
+      gameId,
+      { $push: { guesses: { value: guess } } },
+    );
+  }
+
+  create(data, params) {
+    const { gameId } = params.query;
+    const { guess } = data;
+
+    return this.addGuess(gameId, guess)
+      .then(({ code: { value: secret } }) => {
+        const NONE = 'NONE';
+        const COW = 'COW';
+        const BULL = 'BULL';
+        return guess.split('')
+          .map((digit, i) => {
+            if (digit === secret[i]) {
+              return BULL;
+            } else if (secret.includes(digit)) {
+              return COW;
+            }
+            return NONE;
+          })
+          .filter(val => val !== NONE)
+          .reduce(
+            (rating, val) => {
+              const key = val === BULL ? 'BULLS' : 'COWS';
+              return Object.assign(rating, { [key]: rating[key] + 1 });
+            },
+            { BULLS: 0, COWS: 0 },
+          );
+    });
   }
 }
 
