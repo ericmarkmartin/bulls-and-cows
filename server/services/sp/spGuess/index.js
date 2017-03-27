@@ -42,7 +42,15 @@ class Service {
             },
             { BULLS: 0, COWS: 0 },
           );
-    });
+      })
+      .catch((err) => {
+        if (err.name === 'NotFound') {
+          return err.message;
+        } else if (err.name === 'BadRequest' && err.errors.guesses) {
+          return err.errors.guesses.errors.value.message;
+        }
+        return 'Request failed';
+      });
   }
 }
 

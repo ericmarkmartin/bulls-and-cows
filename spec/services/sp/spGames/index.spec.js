@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import app from '../../../server/app';
+import app from '../../../../server/app';
 
 chai.use(dirtyChai);
 

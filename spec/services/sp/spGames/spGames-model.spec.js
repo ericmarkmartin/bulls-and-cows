@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import SPGamesModel from '../../../server/services/spGames/spGames-model';
+import { spGamesModel as SPGamesModel } from '../test-models';
 
 chai.use(dirtyChai);
 

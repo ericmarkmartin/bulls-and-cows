@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
 import authentication from './authentication';
 import user from './user';
-import spGames from './spGames';
-import spGuess from './spGuess';
-
+import { spGames, spGuess } from './sp';
 
 function services() {
   const app = this;
