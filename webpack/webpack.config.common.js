@@ -1,6 +1,6 @@
 import path from 'path';
 import merge from 'webpack-merge';
-import { lintJavascript } from './webpack.parts';
+import { stylusLoader, lintJavascript } from './webpack.parts';
 
 const paths = {
   server: path.join(__dirname, 'src'),
@@ -8,6 +8,7 @@ const paths = {
 };
 
 const config = merge([
+  stylusLoader(),
   lintJavascript({
     include: [
       paths.server,
