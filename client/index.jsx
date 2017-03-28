@@ -1,12 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-if (module.hot) {
-  module.hot.accept();
-}
+import App from './App';
 
-const HelloWorld = () => (
-  <div>App made with Feathers, React, and Webpack</div>
-);
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
-render(<HelloWorld />, document.getElementById('app'));
+// if (module.hot) {
+//   module.hot.accept();
+// }
+
+render(<App />, document.getElementById('app'));
