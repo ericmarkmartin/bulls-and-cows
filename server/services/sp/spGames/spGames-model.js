@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { codeSchemaN } from '../code-model';
 // spGames-model.js - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
